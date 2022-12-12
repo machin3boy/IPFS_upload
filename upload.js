@@ -2,7 +2,7 @@ const { Web3Storage, getFilesFromPath, File } = require('web3.storage')
 const filesFromPath = require('files-from-path')
 
 async function makeStorageClient () {
-  return new Web3Storage({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDY1Mjg1ZUUwNDBhMUJGYTZkNTRCMTg1NzdFNzc5OGRiM2ExODE0ZDciLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzA4NDYwNDU5MTUsIm5hbWUiOiJNYXN0ZXIifQ.MCwlvw50zzVWFjOoKmGIRgv-iKe8hauHvU52LPTAcoY" })
+  return new Web3Storage({ token: "paste your web3.storage IPFS token here" })
 }
 
 async function storeFiles (files) {
@@ -58,5 +58,4 @@ async function storeWithProgress (path='path/to/somewhere') {
   // and return the root cid when the upload completes
   return client.put(files, { onRootCidReady, onStoredChunk })
 }
-
 
