@@ -1,4 +1,4 @@
-const { web3Storage, getFilesFromPath, File } = require('web3.storage')
+const { Web3Storage, getFilesFromPath, File } = require('web3.storage')
 const filesFromPath = require('files-from-path')
 
 function getAccessToken () {
