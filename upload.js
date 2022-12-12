@@ -1,5 +1,6 @@
 const { Web3Storage, getFilesFromPath, File } = require('web3.storage')
 const filesFromPath = require('files-from-path')
+require('dotenv').config({path: '.env'})
 
 function getAccessToken () {
   // If you're just testing, you can paste in a token
