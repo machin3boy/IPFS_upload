@@ -1,25 +1,12 @@
 const { Web3Storage, getFilesFromPath, File } = require('web3.storage')
 const filesFromPath = require('files-from-path')
-require('dotenv').config({path: '.env'})
 
-function getAccessToken () {
-  // If you're just testing, you can paste in a token
-  // and uncomment the following line:
-  // return 'paste-your-token-here'
-
-  // In a real app, it's better to read an access token from an
-  // environement variable or other configuration that's kept outside of
-  // your code base. For this to work, you need to set the
-  // WEB3STORAGE_TOKEN environment variable before you run your code.
-  return process.env.WEB3STORAGE_TOKEN
-}
-
-function makeStorageClient () {
-  return new Web3Storage({ token: getAccessToken() })
+async function makeStorageClient () {
+  return new Web3Storage({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDY1Mjg1ZUUwNDBhMUJGYTZkNTRCMTg1NzdFNzc5OGRiM2ExODE0ZDciLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzA4NDYwNDU5MTUsIm5hbWUiOiJNYXN0ZXIifQ.MCwlvw50zzVWFjOoKmGIRgv-iKe8hauHvU52LPTAcoY" })
 }
 
 async function storeFiles (files) {
-  const client = makeStorageClient()
+  const client = await makeStorageClient()
   const cid = await client.put(files)
   console.log('stored files with cid:', cid)
   return cid
@@ -46,6 +33,7 @@ function makeFileObjects () {
 }
 
 async function storeWithProgress (path='path/to/somewhere') {
+  // have a look at https://www.npmjs.com/package/files-from-path for more control
   // show the root cid as soon as it's ready
   const files = await getFilesFromPath(path);
 
@@ -64,7 +52,7 @@ async function storeWithProgress (path='path/to/somewhere') {
   }
 
   // makeStorageClient returns an authorized web3.storage client instance
-  const client = makeStorageClient()
+  const client = await makeStorageClient()
 
   // client.put will invoke our callbacks during the upload
   // and return the root cid when the upload completes

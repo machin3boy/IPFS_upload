@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "dotenv": "^16.0.3",
     "files-from-path": "^0.2.6",
     "web3.storage": "^4.4.0"
   }
